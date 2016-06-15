@@ -17,10 +17,15 @@ abstract class GestoreStream {
 			System.out.println("Errore in apertura del file");
 			return "Errore";
 		}
+
 		File file = new File(nome);
 		long length = file.length();
 		int[] array = new int[(int)length]; 
 		
+		/* 
+		  di seguito memorizzo in un array di char il contenuto
+		  del file da leggere 
+		*/
 		try {
 			array[0] = f.read();
 			for(int i=1; i<array.length; i++) {
@@ -30,9 +35,7 @@ abstract class GestoreStream {
 			System.out.println("Errore in lettura del file");
 		}
 
-		for (int i=0; i<array.length; i++) {
-			s+=(char)array[i];
-		}
+		s = new String(array); //creo una stringa dall'array
 
 		try {
 			f.close();
