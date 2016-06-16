@@ -20,16 +20,16 @@ abstract class GestoreStream {
 
 		File file = new File(nome);
 		long length = file.length();
-		int[] array = new int[(int)length]; 
+		char[] array = new char[(int)length]; 
 		
 		/* 
 		  di seguito memorizzo in un array di char il contenuto
 		  del file da leggere 
 		*/
 		try {
-			array[0] = f.read();
+			array[0] = (char)f.read();
 			for(int i=1; i<array.length; i++) {
-				array[i] = f.read();
+				array[i] = (char)f.read();
 			}
 		} catch(IOException e) {
 			System.out.println("Errore in lettura del file");
@@ -45,5 +45,5 @@ abstract class GestoreStream {
 		return s;
 	}
 
-	public void importaContenuto(String percorso) {}
+	public void importaContenuto(String percorso, String nome) {}
 }
