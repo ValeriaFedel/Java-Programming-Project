@@ -21,5 +21,10 @@ public class NotaAccount extends Nota {
   public String getPassword () {
     return password;
   }
+
+  public String getContenuto() {
+    String s = "username: "+getUsername()+"\n"+"password: "+getPassword();
+    return s;
+  }
   
 }

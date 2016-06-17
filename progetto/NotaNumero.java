@@ -15,5 +15,9 @@ public class NotaNumero extends Nota {
   public int getNumero() {
     return numero;
   }
+
+  public String getContenuto() {
+    return ""+getNumero();
+  }
   
 }

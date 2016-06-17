@@ -5,6 +5,7 @@ public abstract class Nota {
   /** ATTRIBUTI di classe*/
   protected int id;
   protected Date data;
+  protected String contenuto;
   
   
   /** COSTRUTTORE */
@@ -23,6 +24,6 @@ public abstract class Nota {
     return data;
   }
   
-  // abstract String getContenuto ();
+  abstract String getContenuto ();
   
 }

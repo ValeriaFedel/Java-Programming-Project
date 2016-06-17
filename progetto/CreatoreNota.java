@@ -9,9 +9,9 @@ public class CreatoreNota {
     JsonObject json = new JsonObject ();
     json = (JsonObject)parser.parse(stringaJson);
     
-    Nota nota;
+    Nota nota = null;
     int id = json.get("id").getAsInt();
-    Date data = json.get("date"); // json.get("date") è di tipo JsonElement...
+    Date data = new Date(System.currentTimeMillis()); //json.get("date"); // json.get("date") è di tipo JsonElement...
     /*
     La classe Data ha un metodo toString che trasforma la data "scomposta" in una 
     stringa di forma yyyy-mm-dd. Tutti gli altri metodi della classe sono deprecati..

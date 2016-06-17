@@ -14,6 +14,10 @@ public class GestoreNoteSegrete {
 
 	public void impostaPassword(String psw) {
 		this.password = psw;
+		String passwordCodificata = codifica.codifica(psw);
+		gestore.creaFile("Master_password", passwordCodificata);
+
+
 	}
 
 	public boolean passwordImpostata() {
@@ -26,7 +30,7 @@ public class GestoreNoteSegrete {
 
 	public void creaNuovaNota(String path) {
 		String contenuto = gestore.leggiFile(path);
-		Nota nuovaNota = CreatoreNote.creaNota(contenuto);
+		Nota nuovaNota = CreatoreNota.creaNota(contenuto);
 		String id = ""+nuovaNota.getId();
 
 		listaNote = new Nota[listaNote.length+1];

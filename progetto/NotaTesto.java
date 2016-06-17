@@ -15,5 +15,9 @@ public class NotaTesto extends Nota {
   public String getTesto() {
     return testo;
   }
+
+  public String getContenuto() {
+    return getTesto();
+  }
   
 }
