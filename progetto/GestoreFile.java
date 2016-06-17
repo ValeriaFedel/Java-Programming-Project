@@ -11,7 +11,7 @@ public class GestoreFile extends GestoreStream {
 
 		String string = leggiFile(percorso); 
 
-		File nota = new File(nome);
+		File nota = new File(percorso+""+nome);
 
 		try {
 			nota.createNewFile();
@@ -23,5 +23,7 @@ public class GestoreFile extends GestoreStream {
 		}
 
 	}
+
+
 
 }

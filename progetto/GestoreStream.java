@@ -8,6 +8,36 @@ abstract class GestoreStream {
 		this.destinazione = destinazione;
 	}
 
+	public void creaFile(String nome, String contenuto) {
+		File f = new File(destinazione+""+nome);
+		if(f.exists()) {
+			System.out.println("Un file con quel nome esiste già");
+			return;
+		}
+
+		FileWriter output;
+
+		try {
+			output = new FileWriter(f);
+			output.write(contenuto);
+			output.close();
+		} catch (IOException e) {
+			System.out.println("errore in scrittura");
+			return;
+		}
+
+		try {
+			f.createNewFile();
+		} catch (IOException e) {
+			System.out.println("errore nella creazione del file");
+			return;
+		}
+		
+		return;
+
+
+	}
+
 	public 	String leggiFile(String nome) {
 		FileInputStream f;
 		String s = "";	
