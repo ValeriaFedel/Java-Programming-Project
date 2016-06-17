@@ -1,0 +1,7 @@
+todoList
+
+o Gestire la data
+o problema classe astratta
+o dividersi relazione
+o giuliocesare fix - silvia
+o framenotesegrete - valeria
