@@ -11,11 +11,15 @@ import com.google.gson.*;
 public class CreatoreNota {
 
   /* ------------------------------ METODI ------------------------------- */
-  /** Istanzia e ritorna una nota del tipo adeguato.  */
+  /** Istanzia e ritorna una nota del tipo adeguato.
+    *
+    * @param stringaJson stringa letta dal file json in input.
+    * @return un oggetto di tipo Nota istanziato con il giusto tipo di nota.
+    */
   public static Nota creaNota (String stringaJson) {
 
     JsonParser parser = new JsonParser();
-    JsonObject json = new JsonObject ();
+    JsonObject json = new JsonObject();
     json = (JsonObject)parser.parse(stringaJson);
     
     Nota nota = null;
