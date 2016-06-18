@@ -1,23 +1,27 @@
 class TerminaleNoteSegrete {
-
-	GestoreNoteSegrete gestoreNote; //il gestoreNote è il cuore del programma
-	Nota[] listaNote; 
-
+    
+    /* ----------------------------- ATTRIBUTI ----------------------------- */
+    //il gestoreNote è il cuore del programma
+	GestoreNoteSegrete gestoreNote; 
+	Nota[] listaNote;
+  
+  
+    /* ---------------------------- COSTRUTTORE ---------------------------- */
 	public TerminaleNoteSegrete(GestoreNoteSegrete gestore) {
 		this.gestoreNote = gestore;
 		listaNote = gestore.getNote();
 	}
-
-	/** Metodo che fa effettivamente partire il programma */
+  
+  
+    /* ------------------------------ METODI ------------------------------- */
+	/** Metodo che fa partire il programma */
 	public void run() {
 
 		masterPassword(); //inizio il programma con il primo metodo
 		
 		if(listaNote.length == 0) {
-		
 			System.out.println("Importa la tua prima nota");
 			importaNota();
-
 		}
 		
 		while(true) {

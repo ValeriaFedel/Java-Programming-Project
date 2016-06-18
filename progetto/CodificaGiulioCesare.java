@@ -1,8 +1,11 @@
 	public class CodificaGiulioCesare implements Codifica {
 		
+        /* ----------------------------- ATTRIBUTI ----------------------------- */
+        /** Variabile di tipo intero che contiene il valore dello spostamento */
 		private int shift;
 		private int ritorno;
-
+        
+        /* ---------------------------- COSTRUTTORE ---------------------------- */
 		public CodificaGiulioCesare() {
 			this(5);
 		}
@@ -11,7 +14,8 @@
 			this.shift = shift;
 			this.ritorno = 26-shift;
 		}
-
+        
+        /* ------------------------------ METODI ------------------------------- */
 		public String codifica(String testo) {
 			char[] arrayTesto = testo.toCharArray();
 			for(int i=0; i<arrayTesto.length; i++) {
