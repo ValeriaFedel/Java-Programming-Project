@@ -13,7 +13,7 @@ abstract class GestoreStream {
 	}
 
 	public boolean esisteFile(String nome) {
-		File f = new File(nome);
+		File f = new File(destinazione+""+nome);
 		return f.exists();
 	}
 
@@ -51,13 +51,13 @@ abstract class GestoreStream {
 		FileInputStream f;
 		String s = "";	
 		try {
-			f = new FileInputStream(nome);
+			f = new FileInputStream(destinazione+""+nome);
 		} catch (FileNotFoundException e) {
 			System.out.println("Errore in apertura del file");
 			return "Errore";
 		}
 
-		File file = new File(nome);
+		File file = new File(destinazione+""+nome);
 		long length = file.length();
 		char[] array = new char[(int)length]; 
 		
