@@ -4,8 +4,17 @@ abstract class GestoreStream {
 	
 	String destinazione;
 
+	public GestoreStream(String destinazione) {
+		this.destinazione = destinazione;
+	}
+
 	public void setDestinazione(String destinazione) {
 		this.destinazione = destinazione;
+	}
+
+	public boolean esisteFile(String nome) {
+		File f = new File(nome);
+		return f.exists();
 	}
 
 	public void creaFile(String nome, String contenuto) {

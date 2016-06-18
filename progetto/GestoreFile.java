@@ -3,7 +3,7 @@ import java.io.*;
 public class GestoreFile extends GestoreStream {
 
 	public GestoreFile(String destinazione) {
-		this.destinazione = destinazione;
+		super(destinazione);
 	}
 
 	public void importaContenuto(String percorso, String nome) {
@@ -11,7 +11,7 @@ public class GestoreFile extends GestoreStream {
 
 		String string = leggiFile(percorso); 
 
-		File nota = new File(percorso+""+nome);
+		File nota = new File(destinazione+""+nome+".json");
 
 		try {
 			nota.createNewFile();

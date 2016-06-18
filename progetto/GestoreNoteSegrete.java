@@ -6,16 +6,22 @@ public class GestoreNoteSegrete {
 	private Codifica codifica;
 	private GestoreStream gestore;
 	private String password = null;
+	private final String nomeFilePsw = "Master_password";
 
 	public GestoreNoteSegrete(Codifica codifica, GestoreStream gestore) {
 		this.codifica = codifica;
 		this.gestore = gestore;
+		if (gestore.esisteFile(nomeFilePsw)) {
+			String psw = gestore.leggiFile(nomeFilePsw);
+			password = codifica.decodifica(psw);
+		}
+
 	}
 
 	public void impostaPassword(String psw) {
 		this.password = psw;
 		String passwordCodificata = codifica.codifica(psw);
-		gestore.creaFile("Master_password", passwordCodificata);
+		gestore.creaFile(nomeFilePsw, passwordCodificata);
 
 
 	}
@@ -33,22 +39,28 @@ public class GestoreNoteSegrete {
 		Nota nuovaNota = CreatoreNota.creaNota(contenuto);
 		String id = ""+nuovaNota.getId();
 
-		listaNote = new Nota[listaNote.length+1];
-		listaNote[listaNote.length-1] = nuovaNota;
+
+		Nota[] nuovaListaNote = new Nota[listaNote.length+1];
+		for (int i=0; i<listaNote.length; i++) {
+			nuovaListaNote[i] = listaNote[i];
+		}
+		nuovaListaNote[listaNote.length] = nuovaNota;
+
+		listaNote = nuovaListaNote;
 
 		gestore.importaContenuto(path, id);
 
 	}
 
-	public String getContenutoDecifrato(NotaTesto nota) {
+	public String getContenutoDecifrato(Nota nota) {
 		String contenutoDecifrato;
-		contenutoDecifrato = codifica.decodifica(nota.getTesto()); 
+		contenutoDecifrato = codifica.decodifica(nota.getContenuto()); 
 
 		return contenutoDecifrato;
 	}
 
-	public boolean controllaPasword(String psw) {
-		return psw == password;
+	public boolean controllaPassword(String psw) {
+		return password.equals(psw);
 	} 
 
 }
