@@ -2,6 +2,7 @@ todoList
 
 o Gestire la data - soluzione: millisecondi come data nella nota
 o dividersi relazione
+o commento codice per javadoc - davide
 o giuliocesare fix (numero) - silvia
 |___
 	|o Note, anche il numero sia una stringa //provvisorio - davide
