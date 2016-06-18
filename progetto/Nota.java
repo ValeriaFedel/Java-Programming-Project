@@ -1,13 +1,14 @@
 import java.util.*;
 
-/** 
-  * Classe astratta che definisce una nota nelle sue caratteristiche generali. 
+/** Classe astratta che definisce una nota nelle sue caratteristiche generali. 
   * Viene usata come base per costruire note di diversi tipi, attraverso 
   * sottoclassi che aggiungeranno ulteriori dati.
   *
+  * @see NotaAccount
+  * @see NotaNumero
+  * @see NotaTesto
   * @author Silvia Florio, Valeria Fedel, Davide Mariuzzi 
   */
-
 public abstract class Nota {
   
   /* ----------------------------- ATTRIBUTI ----------------------------- */
@@ -20,8 +21,7 @@ public abstract class Nota {
   
   
   /* ---------------------------- COSTRUTTORE ---------------------------- */
-  /**
-    * Crea un oggetto di tipo Nota contenente le informazioni id e data.
+  /** Crea un oggetto di tipo Nota contenente le informazioni id e data.
     *
     * @param id    numero identificativo della nota.
     * @param data  la data di creazione o ultima modifica.

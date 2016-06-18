@@ -1,13 +1,11 @@
 import java.util.*;
 
-/** 
-  * Classe che estende la classe Nota. </br>
+/** Classe che estende la classe Nota. </br>
   * Rappresenta una nota contenente del testo semplice.
   *
+  * @see Nota
   * @author Silvia Florio, Valeria Fedel, Davide Mariuzzi
-  * 
   */
-
 public class NotaTesto extends Nota {
   
   /* ----------------------------- ATTRIBUTI ----------------------------- */
@@ -16,8 +14,7 @@ public class NotaTesto extends Nota {
   
   
   /* ---------------------------- COSTRUTTORE ---------------------------- */
-  /**
-    * Crea un oggetto di tipo NotaAccount contenente le informazioni id, data,
+  /** Crea un oggetto di tipo NotaAccount contenente le informazioni id, data,
     * username e password.
     *
     * @param id        numero identificativo della nota.
