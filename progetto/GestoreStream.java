@@ -94,42 +94,8 @@ abstract class GestoreStream {
       *                     o chiusura del file.
       * @return ritorna una stringa con il contenuto letto dal file.
       */
-	public String leggiFile(String nome) {
-		FileInputStream f;
-		String s = "";
-      
-		try {
-			f = new FileInputStream(destinazione+""+nome);
-		} catch (FileNotFoundException e) {
-			System.out.println("Errore in apertura del file");
-			return "Errore";
-		}
+	
+	abstract public void leggiContenuto(String percorso);
 
-		File file = new File(destinazione+""+nome);
-		long length = file.length();
-		char[] array = new char[(int)length]; 
-		
-		// Memorizzo in un array di char il contenuto del file da leggere.
-		try {
-			array[0] = (char)f.read();
-			for(int i=1; i<array.length; i++) {
-				array[i] = (char)f.read();
-			}
-		} catch(IOException e) {
-			System.out.println("Errore in lettura del file");
-		}
-      
-        // Creo una stringa dall'array
-		s = new String(array); 
-
-		try {
-			f.close();
-		} catch (IOException e) {
-			System.out.println("Errore in chiusura del file");
-		}
-		return s;
-	}
-    
-	public void importaContenuto(String percorso, String nome) {
-    }
+	abstract public void importaContenuto(String percorso, String nome);
 }

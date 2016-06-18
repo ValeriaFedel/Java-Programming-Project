@@ -5,7 +5,7 @@ class ProvaJson {
 	public static void main(String[] args)  {
 		JsonParser parser = new JsonParser();
 		JsonObject json;
-		GestoreFile gestore = new GestoreFile(".");
+		GestoreStream gestore = new GestoreFile(".");
 		String string = gestore.leggiFile("prova.json"	);
 
 		json = (JsonObject)parser.parse(string);
