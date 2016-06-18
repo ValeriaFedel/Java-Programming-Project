@@ -1,7 +1,21 @@
 todoList
 
-o Gestire la data
-o problema classe astratta
+o Gestire la data - soluzione: millisecondi come data nella nota
 o dividersi relazione
-o giuliocesare fix - silvia
+o giuliocesare fix (numero) - silvia
+|___
+	|o Note, anche il numero sia una stringa //provvisorio - davide
+
 o framenotesegrete - valeria
+o vedere come inserire il jar
+o set directory per gestorefile - silvia
+o gestire creazione da directory anzichè da file - silvia
+|_
+  |o gestire situazione in cui ci sono già note - silvia
+
+o vedere di eccezzioni varie
+|_
+  |o file selezionato non è json
+
+o gestire inserimento password sbagliata
+
