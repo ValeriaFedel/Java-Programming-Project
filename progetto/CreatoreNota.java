@@ -1,10 +1,17 @@
 import java.util.*;
 import com.google.gson.*;
 
+/** Classe <code>CreatoreNota</code>. </br>
+  * Contiene un metodo statico che permette la creazione di una nota.
+  * È priva di costruttori e attributi.
+  *
+  * @see Nota
+  * @author Silvia Florio, Valeria Fedel, Davide Mariuzzi 
+  */
 public class CreatoreNota {
-  /** La classe non ha né costruttori né attributi.
-    * Contiene un unico metodo static 
-    */
+
+  /* ------------------------------ METODI ------------------------------- */
+  /** Istanzia e ritorna una nota del tipo adeguato.  */
   public static Nota creaNota (String stringaJson) {
 
     JsonParser parser = new JsonParser();
