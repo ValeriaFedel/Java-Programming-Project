@@ -1,0 +1,36 @@
+****************************************************************************************
+**************** ANALISI DA INSERIRE NELLA RELAZIONE (MASSIMO 2 PAGINE) ****************                                
+****************************************************************************************
+
+----------------------------------------------------------------------------------------
+FASE 1 - Analisi delle specifiche
+(Proporre un ragionamento in base alle specifiche)
+La soluzione proposta consiste in un semplice visualizzatore di note cifrate, che preleva
+il contenuto cifrato da un file e, tramite l'inserimento di una password conosciuta solo 
+dall'utilizzatore, ne decodifica il contenuto per poi visualizzarlo.
+Questo programma è stato sviluppato adoperando dei criteri precisi in ambito di sicurezza 
+e semplicità per l'utente, nonché di praticità per modifiche future al codice.
+Questi aspetti verranno approfonditi nei capitoli successivi.
+
+----------------------------------------------------------------------------------------
+FASE 2 - Spiegazione delle scelte progettuali
+- Inserire schema a blocchi in UML
+- Spiegazione sommaria (quante sono le classi, concetto di modularità, altro...)
+- Spiegare per ogni classe:
+      - attributi di classe: perché di quel tipo, a cosa serve, protected o private? ecc...
+      - costruttori: parametri, contenuto ecc...;
+      - metodi: cosa fanno, quali (eventuali) parametri utlizzano, cosa restituiscono se
+                se restituiscono qualcosa;
+      - casi particolari: hai usato overriding, cast di tipo o hai dovuto risolvere cose
+                          "strane"?;
+      - relazioni con altre classi: la classe dipende da un'altra?;
+        
+----------------------------------------------------------------------------------------      
+FASE 3 - Prova di esecuzione.
+Fare screenshots delle schermate del programma e spiegarne il funzionamento.
+
+
+----------------------------------------------------------------------------------------
+Ovviamente è una scaletta parziale che non tiene conto di tutti i ragionamenti possibili
+da fare o che sono stati fatti. Quindi modificatela tranquillamente tenendo conto che è
+meglio aggiungere punti piuttosto che toglierli! :D
