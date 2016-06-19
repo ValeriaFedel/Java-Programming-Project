@@ -24,7 +24,7 @@ public class CreatoreNota {
     
     Nota nota = null;
     int id = json.get("id").getAsInt();
-    Date data = new Date(System.currentTimeMillis());
+    long data = new Date(System.currentTimeMillis());
     
     if (json.get("number") != null) {
       int numero = json.get("number").getAsInt();
