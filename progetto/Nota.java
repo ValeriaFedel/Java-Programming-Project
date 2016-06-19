@@ -53,5 +53,9 @@ public abstract class Nota {
     * @return una stringa con il contenuto della nota.
     */
   abstract String getContenuto ();
+
+  public String toString() {
+    return ("id: "+listaNote[i].getId()+"    ::    data: "+listaNote[i].getData());
+  }
   
 }
