@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.CardLayout;
 import java.util.*;
 
+/* FrameNoteSegrete è il frame principale. È stato creato un panel contenitore (mainPanel) per utilizzare 
+il CardLayout, a cui sono stati aggiunti i vari tipi di panel (SetPassword, CaricaNote, ecc.). */
 
 class FrameNoteSegrete extends Frame {
 
@@ -15,8 +17,8 @@ class FrameNoteSegrete extends Frame {
 	SetPassword setPassword;
 	CaricaNote caricaNote;
 	ElencoNote elencoNote;
-	CardLayout card;
 	NotaSelezionata notaSelezionata;
+	CardLayout card;
 
 	public FrameNoteSegrete(GestoreNoteSegrete gestore) {
 		
@@ -41,10 +43,10 @@ class FrameNoteSegrete extends Frame {
 		card = new CardLayout(); // imposto il layout CardLayout per tutti i panel
 	    mainPanel = new Panel(); // creo il panel principale
 		
-		setPassword = new SetPassword(); // primo panel che viene aggiunto a quello principale
-		caricaNote = new CaricaNote(); // secondo panel aggiunto	
-		elencoNote = new ElencoNote();
-		notaSelezionata = new NotaSelezionata();
+		setPassword = new SetPassword(card,mainPanel,gestore); // primo panel che viene aggiunto a quello principale
+		caricaNote = new CaricaNote(card,mainPanel,gestore); // secondo panel aggiunto	
+		elencoNote = new ElencoNote(card,mainPanel,gestore);
+		notaSelezionata = new NotaSelezionata(card,mainPanel,gestore);
 			
 		mainPanel.setLayout(card);
 		mainPanel.add(setPassword, "setPassword");
@@ -57,7 +59,8 @@ class FrameNoteSegrete extends Frame {
 		this.add(mainPanel);
 		setVisible(true);
 	    setResizable(true);
-	}
+	}	
+}
 
 
 	// Impostare la password
@@ -70,10 +73,17 @@ class FrameNoteSegrete extends Frame {
 		Button invioPassword;
 		TextField msgPasswordImpostata;
 		
-		
+		CardLayout card;
+		Panel mainPanel;
 
-		public SetPassword() {
+		GestoreNoteSegrete gestore;
+		
+		public SetPassword(final CardLayout card, final Panel mainPanel,GestoreNoteSegrete gestore) {
 			
+			this.card = card;
+			this.mainPanel = mainPanel;
+			this.gestore = gestore;
+
 			this.setLayout(new FlowLayout());
 			msgPassword = new Label("Scegli una password:");
 			fieldPassword = new TextField();
@@ -102,15 +112,22 @@ class FrameNoteSegrete extends Frame {
 				}
 			});
 		}
-
 	}
 
+
 	
-	// Carica le note
+	// Caricare le note
 	class CaricaNote extends Panel {
 
-		public CaricaNote() {
+		CardLayout card;
+		Panel mainPanel;
+		GestoreNoteSegrete gestore;
+
+		public CaricaNote(final CardLayout card, final Panel mainPanel,GestoreNoteSegrete gestore) {
 			
+			this.card = card;
+			this.mainPanel = mainPanel;
+
 			Button b = new Button("Scegli File");
 			Frame f = new Frame();
 
@@ -131,7 +148,7 @@ class FrameNoteSegrete extends Frame {
 
 					String s = dialog.getDirectory()+dialog.getFile();
 
-					// gestore.copia(s);
+					gestore.creaNuovaNota(s);
 					
 				}
 
@@ -150,6 +167,7 @@ class FrameNoteSegrete extends Frame {
 		}
 	} 
 
+	// Visualizzare l'elenco delle note caricate
 	class ElencoNote extends Panel {
 
 		GestoreNoteSegrete gestore;
@@ -162,10 +180,15 @@ class FrameNoteSegrete extends Frame {
 		Date d;
 		int q;
 
+		CardLayout card;
+		Panel mainPanel;
+		
 
-		public ElencoNote() {
+		public ElencoNote(final CardLayout card, final Panel mainPanel,GestoreNoteSegrete gestore) {
 			
-			try {
+			this.card = card;
+			this.mainPanel = mainPanel;
+
 
 			if (gestore.getNote() == null) {
 				
@@ -184,7 +207,7 @@ class FrameNoteSegrete extends Frame {
 			casella = new Panel[listaNote.length];
 			
 			// creo le caselle
-			for (int i = 0; i <= listaNote.length; i++) {
+			for (int i = 0; i < listaNote.length; i++) {
 				panel = new Panel();
 				panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 				panel.setPreferredSize(new Dimension(50, 25));
@@ -195,7 +218,7 @@ class FrameNoteSegrete extends Frame {
 
 
 			// inserisco i dati all'interno di ciascuna casella
-			for (int i = 0; i <= listaNote.length; i++) {
+			for (int i = 0; i < listaNote.length; i++) {
 	
 				q = listaNote[i].getId();
 				d = listaNote[i].getData();
@@ -204,6 +227,10 @@ class FrameNoteSegrete extends Frame {
 				panel.add(id);
 				panel.add(data);
 			}
+
+			// questo panel evita che venga gettata l'eccezione NullPointerException da panel.addMouseListener
+			panel = new Panel();
+			add(panel);
 
 			// cliccando su una nota, appare un dialog con le informazioni su quella nota
 			panel.addMouseListener(new MouseAdapter() {
@@ -219,25 +246,28 @@ class FrameNoteSegrete extends Frame {
                     setBackground(background);
                     card.show(mainPanel, "notaSelezionata");
                 }
- 				});
-			}
-
-			} catch (NullPointerException e) {
-				System.out.println(e);
+ 				}); 
 			}	
 		}
 	}
 
-
+	// Visualizzare una nota singola, dopo la sua selezione
 	class NotaSelezionata extends Panel {
 
-		public NotaSelezionata() {
+		CardLayout card;
+		Panel mainPanel;
+		GestoreNoteSegrete gestore;
+
+		public NotaSelezionata(final CardLayout card, final Panel mainPanel,GestoreNoteSegrete gestore) {
 			
+			this.card = card;
+			this.mainPanel = mainPanel;
+
       		setVisible(true);
-			setResizable(true);
+			
 		}
 	}
-}
+
 
 
 
