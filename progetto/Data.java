@@ -13,7 +13,7 @@ import java.util.Date;
 public class Data {
     
     /* ------------------------------ METODI ------------------------------- */
-    /** Questo metodo converte un valore di tipo <code>long</code> in una
+    /** Questo metodo converte un valore di tipo <code>Date</code> in una
       * stringa contenente la data nel formato voluto. <br> 
       * Modificando opportunamente la stringa <code>"dd/MM/yyyy"</code> si
       * ottiene facilmente una data in un altro formato.
@@ -22,10 +22,9 @@ public class Data {
       *                     <code>System.currentTimeMillis()</code>
       * @return ritorna una stringa con la data.
       */
-    public static String trasformaInData(long millisecondi) {
+    public static String trasformaInData(Date dataJson) {
         SimpleDateFormat dataFormattata = new SimpleDateFormat("dd/MM/yyyy");    
-        Date dataStandard = new Date(millisecondi);
-        String dataInStringa = dataFormattata.format(dataStandard);
+        String dataInStringa = dataFormattata.format(dataJson);
         return dataInStringa;
     }
 }

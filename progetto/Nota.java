@@ -15,7 +15,7 @@ public abstract class Nota {
   /** Contiene il numero identificativo della nota. */
   protected int id;
   /** Contiene la data della nota. */
-  protected long data;
+  protected Date data;
   /** Contiene la stringa con il contenuto del file. */
   protected String contenuto;
   
@@ -26,7 +26,7 @@ public abstract class Nota {
     * @param id    numero identificativo della nota.
     * @param data  la data di creazione o ultima modifica.
     */
-  public Nota (int id, long data) {
+  public Nota (int id, Date data) {
     this.id = id;
     this.data = data;
   }
@@ -45,7 +45,7 @@ public abstract class Nota {
     *
     * @return il valore della data (in millisecondi).
     */
-  public long getData () {
+  public Date getData () {
     return data;
   }
   /** Metodo astratto che verr&agrave; implementato nelle sottoclassi.

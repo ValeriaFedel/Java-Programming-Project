@@ -25,7 +25,7 @@ public class NotaAccount extends Nota {
     * @param username  nome utente.
     * @param password  password.
     */
-  public NotaAccount (int id, long data, String username, String password) {
+  public NotaAccount (int id, Date data, String username, String password) {
     super(id, data);
     this.username = username;
     this.password = password;

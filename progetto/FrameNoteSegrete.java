@@ -179,7 +179,8 @@ public class FrameNoteSegrete extends Frame {
 		Panel[] casella;
 		Panel panel;
 		Nota[] listaNote;
-		long dataInMillisecondi;
+		Date dataStandard;
+        Data dataFormattata;
 		int q;
 
 		CardLayout card;
@@ -216,7 +217,9 @@ public class FrameNoteSegrete extends Frame {
 			// inserisco i dati all'interno di ciascuna casella
 			for (int i = 0; i < listaNote.length; i++) {
 				q = listaNote[i].getId();
-				dataInMillisecondi = Data.trasformaInData(listaNote[i].getData());
+                //Nuovo codice da controllare
+				dataStandard = listaNote[i].getData();
+                dataFormattata = Data.trasformaInData(dataStandard);
 				id = new TextField(q);
 				//data = new TextField(d);
 				casella[i].add(id);

@@ -21,7 +21,7 @@ public class NotaTesto extends Nota {
     * @param data      la data di creazione o ultima modifica.
     * @param testo     testo contenuto nella nota.
     */
-  public NotaTesto (int id, long data, String testo) {
+  public NotaTesto (int id, Date data, String testo) {
     super(id, data);
     this.testo = testo;
   }
