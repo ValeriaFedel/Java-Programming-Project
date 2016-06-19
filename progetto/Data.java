@@ -15,8 +15,8 @@ public class Data {
     /* ------------------------------ METODI ------------------------------- */
     /** Questo metodo converte un valore di tipo <code>long</code> in una
       * stringa contenente la data nel formato voluto. <br> 
-      * Modificando opportunamente la stringa <code>"dd/MM/yyyy"</code> si può
-      * ottenere facilmente una data in un altro formato.
+      * Modificando opportunamente la stringa <code>"dd/MM/yyyy"</code> si
+      * ottiene facilmente una data in un altro formato.
       *
       * @param millisecondi variabile che contiene il risultato dell'istruzione
       *                     <code>System.currentTimeMillis()</code>

@@ -26,12 +26,18 @@ public class NotaNumero extends Nota {
   }
   
   /* ------------------------------ METODI ------------------------------- */
-  /** Restituisce il numero letto dalla nota in forma di numero intero */
+  /** Restituisce il numero letto dalla nota in forma di numero intero.
+    *
+    * @return un numero intero che rappresenta la nota numerica del file.
+    */
   public int getNumero() {
     return numero;
   }
   
-  /** Restituisce il numero letto dalla nota in forma di stringa */
+  /** Restituisce il numero letto dalla nota in forma di stringa.
+    *
+    * @return ritorna una stringa contenente il numero memorizzato nella nota.
+    */
   public String getContenuto() {
     return ""+getNumero();
   }

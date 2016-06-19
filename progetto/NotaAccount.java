@@ -25,7 +25,7 @@ public class NotaAccount extends Nota {
     * @param username  nome utente.
     * @param password  password.
     */
-  public NotaAccount (int id, Date data, String username, String password) {
+  public NotaAccount (int id, long data, String username, String password) {
     super(id, data);
     this.username = username;
     this.password = password;
@@ -33,17 +33,29 @@ public class NotaAccount extends Nota {
   
   
   /* ------------------------------ METODI ------------------------------- */
-  /** Metodo che restituisce il nome utente. */ 
+  /** Restituisce il nome utente.
+    *
+    * @return ritorna una stringa con il contenuto del campo <code>"username"
+    *         </code> del file json.
+    */ 
   public String getUsername() {
     return username;
   }
   
-  /** Metodo che restituisce la password. */
+  /** Restituisce la password.
+    *
+    * @return ritorna una stringa con il contenuto del campo <code>"password"
+    *         </code> del file json.
+    */
   public String getPassword () {
     return password;
   }
   
-  /** Metodo che restituisce il contenuto della nota in formato stringa. */
+  /** Restituisce i dati contenuti nella nota.
+    *
+    * @return ritorna una stringa con i dati <b>username</b> e <b>password</b>
+    *         contenuti nel file json.
+    */
   public String getContenuto() {
     String s = "username: "+getUsername()+"\n"+"password: "+getPassword();
     return s;

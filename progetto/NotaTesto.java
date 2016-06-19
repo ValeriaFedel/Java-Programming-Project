@@ -9,7 +9,7 @@ import java.util.*;
 public class NotaTesto extends Nota {
   
   /* ----------------------------- ATTRIBUTI ----------------------------- */
-  /** Variabile che conterrà il testo letto dal file. */
+  /** Variabile che conterr&agrave; il testo letto dal file. */
   private String testo;
   
   
@@ -21,19 +21,26 @@ public class NotaTesto extends Nota {
     * @param data      la data di creazione o ultima modifica.
     * @param testo     testo contenuto nella nota.
     */
-  public NotaTesto (int id, Date data, String testo) {
+  public NotaTesto (int id, long data, String testo) {
     super(id, data);
     this.testo = testo;
   }
   
   
   /* ------------------------------ METODI ------------------------------- */
-  /** Restituisce il testo contenuto nella nota */
+  /** Restituisce il testo contenuto nella nota.
+    *
+    * @return ritorna una stringa con il contenuto del campo "testo".
+    */
   public String getTesto() {
     return testo;
   }
   
-  /** Restituisce il testo contenuto nella nota (ridondante) */
+  /** Restituisce il testo contenuto nella nota.
+    *
+    * @see getTesto() il risultato &egrave; lo stesso.
+    * @return ritorna una stringa con il contenuto del campo "testo". 
+    */
   public String getContenuto() {
     return getTesto();
   }
