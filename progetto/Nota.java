@@ -55,7 +55,7 @@ public abstract class Nota {
   abstract String getContenuto ();
 
   public String toString() {
-    return ("id: "+listaNote[i].getId()+"    ::    data: "+listaNote[i].getData());
+    return ("id: "+id+"    ::    data: "+data);
   }
   
 }
