@@ -5,10 +5,13 @@ import javax.swing.*;
 import java.awt.CardLayout;
 import java.util.*;
 
+import javax.swing.JFrame;
+
+
 /* FrameNoteSegrete è il frame principale. È stato creato un panel contenitore (mainPanel) per utilizzare 
 il CardLayout, a cui sono stati aggiunti i vari tipi di panel (SetPassword, CaricaNote, ecc.). */
 
-class FrameNoteSegrete extends Frame {
+public class FrameNoteSegrete extends Frame {
 
 	private Nota[] listaNote;
 	private GestoreNoteSegrete gestore;
@@ -17,7 +20,7 @@ class FrameNoteSegrete extends Frame {
 	SetPassword setPassword;
 	CaricaNote caricaNote;
 	ElencoNote elencoNote;
-	NotaSelezionata notaSelezionata;
+	//NotaSelezionata notaSelezionata;
 	CardLayout card;
 
 	public FrameNoteSegrete(GestoreNoteSegrete gestore) {
@@ -46,13 +49,13 @@ class FrameNoteSegrete extends Frame {
 		setPassword = new SetPassword(card,mainPanel,gestore); // primo panel che viene aggiunto a quello principale
 		caricaNote = new CaricaNote(card,mainPanel,gestore); // secondo panel aggiunto	
 		elencoNote = new ElencoNote(card,mainPanel,gestore);
-		notaSelezionata = new NotaSelezionata(card,mainPanel,gestore);
+		//notaSelezionata = new NotaSelezionata(card,mainPanel,gestore);
 			
 		mainPanel.setLayout(card);
 		mainPanel.add(setPassword, "setPassword");
 		mainPanel.add(caricaNote, "caricaNote");
 		mainPanel.add(elencoNote, "elencoNote");
-		mainPanel.add(notaSelezionata, "notaSelezionata");
+		// mainPanel.add(notaSelezionata, "notaSelezionata");
 
 		card.show(mainPanel, "setPassword");
 
@@ -189,6 +192,8 @@ class FrameNoteSegrete extends Frame {
 			this.card = card;
 			this.mainPanel = mainPanel;
 
+			
+			setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
 			if (gestore.getNote() == null) {
 				
@@ -204,6 +209,7 @@ class FrameNoteSegrete extends Frame {
 
 			listaNote = gestore.getNote();
 
+			// una "casella" contiene una nota
 			casella = new Panel[listaNote.length];
 			
 			// creo le caselle
@@ -212,8 +218,8 @@ class FrameNoteSegrete extends Frame {
 				panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 				panel.setPreferredSize(new Dimension(50, 25));
 				casella[i] = panel;					
-				add(panel);
-				panel.setVisible(true);
+				add(casella[i]);
+				casella[i].setVisible(true);
 			}
 
 
@@ -223,9 +229,9 @@ class FrameNoteSegrete extends Frame {
 				q = listaNote[i].getId();
 				d = listaNote[i].getData();
 				id = new TextField(q);
-				// data = new TextField(d);
-				panel.add(id);
-				panel.add(data);
+				//data = new TextField(d);
+				casella[i].add(id);
+				//casella[i].add(data);
 			}
 
 			// questo panel evita che venga gettata l'eccezione NullPointerException da panel.addMouseListener
@@ -244,7 +250,9 @@ class FrameNoteSegrete extends Frame {
 
                 public void mouseReleased(MouseEvent e) {
                     setBackground(background);
-                    card.show(mainPanel, "notaSelezionata");
+
+                    NotaSelezionata f = new NotaSelezionata();
+                    
                 }
  				}); 
 			}	
@@ -252,26 +260,37 @@ class FrameNoteSegrete extends Frame {
 	}
 
 	// Visualizzare una nota singola, dopo la sua selezione
-	class NotaSelezionata extends Panel {
+	class NotaSelezionata extends JFrame {
 
-		CardLayout card;
-		Panel mainPanel;
 		GestoreNoteSegrete gestore;
 
-		public NotaSelezionata(final CardLayout card, final Panel mainPanel,GestoreNoteSegrete gestore) {
+		public NotaSelezionata() {
 			
-			this.card = card;
-			this.mainPanel = mainPanel;
+			setSize(300,60);
+			getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+			
+			Panel p1 = new Panel();
+			Label labelID = new Label("ID:");
+			TextField fID = new TextField();
+			p1.add(labelID);
+			p1.add(fID);
+			getContentPane().add(p1);
 
-      		setVisible(true);
-			
+			Panel p2 = new Panel();
+			Label labelData = new Label("Data:");
+			TextField fData = new TextField();
+			p2.add(labelData);
+			p2.add(fData);
+			getContentPane().add(p2);
+
+      		setVisible(true);			
 		}
 	}
 
 
 
 
-public class Esegui {
+ class Esegui {
 
 	public static void main(String[] args) {
 		Codifica codifica = new CodificaGiulioCesare();
