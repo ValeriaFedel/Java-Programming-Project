@@ -11,9 +11,9 @@ import java.util.*;
 public class GestoreNoteSegrete {
   
     /* ----------------------------- ATTRIBUTI ----------------------------- */
-    /** Array di note di tipo <code>Nota</code>. Istanziato con lunghezza=1.
+    /** Array di note di tipo <code>Nota</code>.
       */
-	private Nota[] listaNote = new Nota[0];
+	private Nota[] listaNote;
     /** Oggetto che servirà ad applicare le procedure di codifica e decodifica
       * al contenuto della nota.
       */
@@ -27,7 +27,7 @@ public class GestoreNoteSegrete {
     /** Costante che specifica quale nome dovrà avere il file contenente la
       * master password.
       */
-	private final String nomeFilePsw = "Master_password.txt";
+	private final String NOME_FILE_PSW = "Master_password.txt";
   
   
     /* ---------------------------- COSTRUTTORE ---------------------------- */
@@ -45,8 +45,17 @@ public class GestoreNoteSegrete {
 	public GestoreNoteSegrete(Codifica codifica, GestoreStream gestore) {
 		this.codifica = codifica;
 		this.gestore = gestore;
-		if (gestore.esisteFile(nomeFilePsw)) {
-			String psw = gestore.leggiFile(nomeFilePsw);
+
+    String[] contenuti = gestore.leggiDirectory(".nota");
+    System.out.println(contenuti.length);
+    listaNote = new Nota[contenuti.length];
+
+    for(int i=0; i<contenuti.length; i++) {
+      listaNote[i] = CreatoreNota.creaNota(contenuti[i]);
+    }
+
+		if (gestore.esisteFile(NOME_FILE_PSW)) {
+			String psw = gestore.leggiFile(NOME_FILE_PSW);
 			password = codifica.decodifica(psw);
 		}
 	}
@@ -61,7 +70,7 @@ public class GestoreNoteSegrete {
 	public void impostaPassword(String psw) {
 		this.password = psw;
 		String passwordCodificata = codifica.codifica(psw);
-		gestore.creaFile(nomeFilePsw, passwordCodificata);
+		gestore.creaFile(NOME_FILE_PSW, passwordCodificata);
 	}
     
     /** Metodo che restituisce vero o falso a seconda che la password sia stata
@@ -110,9 +119,17 @@ public class GestoreNoteSegrete {
     gestore.importaContenuto(path, temp);
     String contenuto = gestore.leggiFile(temp);
     Nota nuovaNota = CreatoreNota.creaNota(contenuto);
-    System.out.println(nuovaNota.getId());
-    String id = "" + nuovaNota.getId();
-    gestore.rename(temp, id);
+    String id = "" + nuovaNota.getId()+".nota";
+    gestore.rinomina(temp, id);
+    // Copia listaNote in nuovaListaNote
+    Nota[] nuovaListaNote = new Nota[listaNote.length+1];
+    for (int i=0; i<listaNote.length; i++) {
+      nuovaListaNote[i] = listaNote[i];
+    }
+            // In ultima posizione si inserisce la nuova nota.
+    nuovaListaNote[listaNote.length] = nuovaNota;
+        // Il "vecchio" arrray viene sostituito con quello "nuovo".
+    listaNote = nuovaListaNote;
 
 	}
     

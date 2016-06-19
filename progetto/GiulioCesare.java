@@ -1,11 +1,6 @@
 public class GiulioCesare implements Codifica {
-	
-  
-    /* ----------------------------- ATTRIBUTI ----------------------------- */
-    private int shift;
-  
-  
-    /* ---------------------------- COSTRUTTORE ---------------------------- */
+	private int shift;
+
 	public GiulioCesare() {
 		this(5);
 	}
@@ -13,9 +8,7 @@ public class GiulioCesare implements Codifica {
 	public GiulioCesare(int shift) {
 		this.shift = shift;
 	}
-  
-  
-    /* ------------------------------ METODI ------------------------------- */
+
 	public String codifica(String testo) {
 		char[] arrayTesto = testo.toCharArray();
 		for(int i=0; i<arrayTesto.length; i++) {

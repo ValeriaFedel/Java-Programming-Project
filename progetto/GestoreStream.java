@@ -1,4 +1,6 @@
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 /** La classe <code>GestoreStream</code> contiene i metodi necessari per leggere
   * e scrivere su file.
@@ -84,14 +86,41 @@ abstract class GestoreStream {
 
 	/* nuovo metodo */
 	
-	public String[] leggiDirectory() {
+	public String[] leggiDirectory(String estensione) {
 		File dir = new File(destinazione);
 		String[] files = dir.list();
-		String[] contenuto = new String[files.length];
+
+		String[] contenuto = new String[0];
 
 		for (int i=0; i<files.length; i++) {
-			contenuto[i] = leggiFile(file);
+
+			if(ottieniEstensione(files[i]).equals("nota")) {
+								
+				// @TODO: sostituire con lista
+				String[] nuovoContenuto = new String[contenuto.length+1];
+
+
+				for(int j=0; j<contenuto.length; j++) {
+					nuovoContenuto[j] = contenuto[j];
+				}
+
+				nuovoContenuto[nuovoContenuto.length-1] = leggiFile(files[i]);
+				contenuto = nuovoContenuto;
+			}
 		}
+
+		
+		
+		return contenuto;
+	}
+
+	/* nuovo metodo */
+	protected static String ottieniEstensione(String nomeFile) {
+		if(nomeFile.lastIndexOf(".") != -1 && nomeFile.lastIndexOf(".") != 0) {
+			return nomeFile.substring(nomeFile.lastIndexOf(".")+1);
+		}
+
+		return "nessuna estensione trovata";
 	}
 
 	/** Metodo che legge il contenuto di un file e lo memorizza in una variabile di
@@ -103,7 +132,7 @@ abstract class GestoreStream {
       * @throws IOException se occorre qualche errore in fase di lettura del file
       *                     o chiusura del file.
       * @return ritorna una stringa con il contenuto letto dal file.
-      */
+      */ 	
 	public 	String leggiFile(String nome) {
 		FileInputStream f;
 		String s = "";	
@@ -142,10 +171,16 @@ abstract class GestoreStream {
 	}
 
 	/*nuovo metodo*/
-	public void rename(String vecchioNome, String nuovoNome) {
-		File file = new File(vecchioNome);
-		File nuovo = new File(nuovoNome);
-		System.out.println(file.renameTo(nuovo));
+	public void rinomina(String vecchioNome, String nuovoNome) {
+		File vecchioFile = new File(destinazione+""+vecchioNome);
+		File nuovoFile = new File(destinazione+""+nuovoNome);
+		try {
+			Files.move(vecchioFile.toPath(), nuovoFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+		} catch(IOException e) {
+			System.out.println("Errore nella rinomina");
+			System.out.println(e);
+			return;
+		}
 	}
 
  	
