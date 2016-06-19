@@ -27,7 +27,7 @@ public class GestoreNoteSegrete {
     /** Costante che specifica quale nome dovrà avere il file contenente la
       * master password.
       */
-	private final String nomeFilePsw = "Master_password";
+	private final String nomeFilePsw = "Master_password.txt";
   
   
     /* ---------------------------- COSTRUTTORE ---------------------------- */
@@ -89,7 +89,8 @@ public class GestoreNoteSegrete {
       *             inserita nell'array di note.
       */
 	public void creaNuovaNota(String path) {
-		String contenuto = gestore.leggiFile(path);
+		/* 
+    String contenuto = gestore.leggiFile(path);
 		Nota nuovaNota = CreatoreNota.creaNota(contenuto);
 		String id = "" + nuovaNota.getId();
         // Copia listaNote in nuovaListaNote
@@ -103,6 +104,16 @@ public class GestoreNoteSegrete {
 		listaNote = nuovaListaNote;
         // gestore richiama il metodo importaContenuto di GestoreStream.
 		gestore.importaContenuto(path, id);
+
+    /*nuova implementazione */
+    String temp = "temp.json";
+    gestore.importaContenuto(path, temp);
+    String contenuto = gestore.leggiFile(temp);
+    Nota nuovaNota = CreatoreNota.creaNota(contenuto);
+    System.out.println(nuovaNota.getId());
+    String id = "" + nuovaNota.getId();
+    gestore.rename(temp, id);
+
 	}
     
     /** Metodo che permette di ottenere il contenuto della nota dopo la 
