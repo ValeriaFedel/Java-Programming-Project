@@ -10,8 +10,8 @@ class NoteSegrete {
 		Codifica giulio = new GiulioCesare(6);
 		GestoreStream gestore = new GestoreFile("note/");
 		GestoreNoteSegrete programma = new GestoreNoteSegrete(giulio, gestore);
-		TerminaleNoteSegrete terminal = new TerminaleNoteSegrete(programma);
+		FrameNoteSegreteProva prova = new FrameNoteSegreteProva(programma);
 
-		terminal.run();
+		prova.run();
 	}
 }	

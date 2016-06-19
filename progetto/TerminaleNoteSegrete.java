@@ -17,29 +17,29 @@ class TerminaleNoteSegrete {
 	/** Metodo che fa partire il programma */
 	public void run() {
 
-		masterPassword(); //inizio il programma con il primo metodo
-		
-		if(listaNote.length == 0) {
-			System.out.println("Importa la tua prima nota");
-			importaNota();
-		}
-		
-		while(true) {
-			visualizzaNote(); //chiamo il prossimo step (direttamente se password già impostata)
-		
-			int scelta = scegliAzione(); 
-
-			switch(scelta) {
-				case 1: importaNota();
-						break;
-
-				case 2: visualizzaContenuto();
-						break;
-
-				default: scegliAzione();
-						 break;
+			masterPassword(); //inizio il programma con il primo metodo
+			
+			if(listaNote.length == 0) {
+				System.out.println("Importa la tua prima nota");
+				importaNota();
 			}
-		}
+			
+			while(true) {
+				visualizzaNote(); //chiamo il prossimo step (direttamente se password già impostata)
+			
+				int scelta = scegliAzione(); 
+
+				switch(scelta) {
+					case 1: importaNota();
+							break;
+
+					case 2: visualizzaContenuto();
+							break;
+
+					default: scegliAzione();
+							 break;
+				}
+			}
 
 
 	}

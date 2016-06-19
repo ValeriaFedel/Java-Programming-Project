@@ -43,11 +43,10 @@ public class GestoreNoteSegrete {
     *        dei dati.
     */
   public GestoreNoteSegrete(Codifica codifica, GestoreStream gestore) {
-	this.codifica = codifica;
+    this.codifica = codifica;
     this.gestore = gestore;
 
-    String[] contenuti = gestore.leggiDirectory(".nota");
-    System.out.println(contenuti.length);
+    String[] contenuti = gestore.leggiDirectory("nota");
     listaNote = new Nota[contenuti.length];
 
     for(int i=0; i<contenuti.length; i++) {
@@ -57,7 +56,7 @@ public class GestoreNoteSegrete {
     if (gestore.esisteFile(NOME_FILE_PSW)) {
       String psw = gestore.leggiFile(NOME_FILE_PSW);
       password = codifica.decodifica(psw);
-      }
+    }
   }
   
   
