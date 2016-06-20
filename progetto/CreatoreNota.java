@@ -20,11 +20,23 @@ public class CreatoreNota {
 
     JsonParser parser = new JsonParser();
     JsonObject json = new JsonObject();
-    json = (JsonObject)parser.parse(stringaJson);
+    Nota nota = new NotaNumero(-1,new Date(0),0);
+    try {
+      json = (JsonObject)parser.parse(stringaJson);
+    } catch(JsonSyntaxException e) {
+      return null;
+    }
+    catch( ClassCastException e) {
+      return nota;
+    }
     
-    Nota nota = null;
     int id = json.get("id").getAsInt();
-    Date data = new Date(json.get("data").getAsLong());
+    Date data; 
+    try {
+      data = new Date(json.get("data").getAsLong());
+    } catch(NumberFormatException e) {
+      data = new Date(0);
+    }
     //  long data = new Date(System.currentTimeMillis());
     
     if (json.get("number") != null) {

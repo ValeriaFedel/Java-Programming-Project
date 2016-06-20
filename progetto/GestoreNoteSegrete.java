@@ -101,6 +101,9 @@ public class GestoreNoteSegrete {
     gestore.importaContenuto(path, temp);
     String contenuto = gestore.leggiFile(temp);
     Nota nuovaNota = CreatoreNota.creaNota(contenuto);
+    if(nuovaNota == null) {
+      return;
+    }
     String id = "" + nuovaNota.getId()+".nota";
     gestore.rinomina(temp, id);
     // Copia listaNote in nuovaListaNote
@@ -108,10 +111,11 @@ public class GestoreNoteSegrete {
     for (int i=0; i<listaNote.length; i++) {
       nuovaListaNote[i] = listaNote[i];
     }
-    // In ultima posizione si inserisce la nuova nota.
+  // In ultima posizione si inserisce la nuova nota.
     nuovaListaNote[listaNote.length] = nuovaNota;
-    // Il "vecchio" array viene sostituito con quello "nuovo".
+  // Il "vecchio" array viene sostituito con quello "nuovo".
     listaNote = nuovaListaNote;
+  
   }
     
   /** Metodo che permette di ottenere il contenuto della nota dopo la 

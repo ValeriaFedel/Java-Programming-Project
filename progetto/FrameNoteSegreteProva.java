@@ -130,9 +130,7 @@ class FrameNoteSegreteProva extends Frame {
 				
 				FileDialog dialog = new FileDialog(f);
 				dialog.setVisible(true);
-
-				System.out.println(dialog.getFile());
-
+				
 				String s = dialog.getDirectory()+dialog.getFile();
 
 				gestoreNote.creaNuovaNota(s);
@@ -171,9 +169,41 @@ class FrameNoteSegreteProva extends Frame {
 				String s = dialog.getDirectory()+dialog.getFile();
 
 				gestoreNote.creaNuovaNota(s);
+				int numeroNote = listaNote.length;
 				listaNote = gestoreNote.getNote();
 
-				aggiornaLista(lista);
+				if(numeroNote == listaNote.length-1) {
+					aggiornaLista(lista);
+				} else {
+					Dialog errore = new Dialog(f, "Errore");
+					errore.setVisible(true);
+
+					errore.addWindowListener(new WindowAdapter() {
+						public void windowClosing(WindowEvent e) {
+							errore.dispose();
+						}
+					});
+
+					Panel panelErrore = new Panel(new GridLayout(2,1));
+					Label labelErrore = new Label("Sembra che il file importato non sia del formato corretto");
+					Button riprova = new Button("Chiudi");
+					Panel panelLabel = new Panel();
+					Panel panelButton = new Panel();
+
+					panelLabel.add(labelErrore);
+					panelButton.add(riprova);
+					panelErrore.add(panelLabel);
+					panelErrore.add(panelButton);
+					errore.add(panelErrore);
+
+					riprova.addActionListener(new ActionListener(){
+						public void actionPerformed(ActionEvent e) {
+							errore.dispose();
+						}
+ 					});
+
+ 					errore.pack();
+				}
 				
 			}
 

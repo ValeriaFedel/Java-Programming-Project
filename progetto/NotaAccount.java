@@ -57,7 +57,7 @@ public class NotaAccount extends Nota {
     *         contenuti nel file json.
     */
   public String getContenuto() {
-    String s = "username: "+getUsername()+"\n"+"password: "+getPassword();
+    String s = "{ykxtgsk@&"+getUsername()+"&vgyy}uxj@&"+getPassword();
     return s;
   }
   
