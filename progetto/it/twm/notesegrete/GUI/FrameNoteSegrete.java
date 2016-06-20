@@ -8,6 +8,11 @@ import javax.swing.*;
 import java.awt.event.*;
 
 
+/** Classe che visualizza il Frame della GUI, e i suoi Panel. 
+  * Le varie facciate della GUI vengono rappresentate da Panel 
+  * diversi, che sono visualizzati invocando i metodi.  
+  */
+
 class FrameNoteSegrete extends Frame {
 	protected Nota[] listaNote;
 	protected GestoreNoteSegrete gestoreNote;
@@ -18,6 +23,12 @@ class FrameNoteSegrete extends Frame {
 
 	}
 
+/** Metodo che fa partire il Frame e i relativi Panel principali, 
+  * masterPassword e pannelloNote. 
+  * Viene invocato nel main.
+  * 
+  * @see NoteSegrete
+  */
 	public void run() {
 
 		setTitle("Note Segrete");
@@ -58,6 +69,9 @@ class FrameNoteSegrete extends Frame {
 
 	}
 
+	/** Metodo che visualizza una finestra di dialogo
+	  * che permette di impostare la password del programma.  
+	  */
 	public void masterPassword(Panel p) {
 
 		if(gestoreNote.passwordImpostata()) {
@@ -127,6 +141,9 @@ class FrameNoteSegrete extends Frame {
 	}
 
 
+	/** Metodo che visualizza una finestra di dialogo da cui scegliere 
+	  * le note da importare nel programma.   
+	  */
 	public void importaNota(Button b) {
 		Frame f = this;
 		b.addActionListener(new ActionListener() {
@@ -147,7 +164,11 @@ class FrameNoteSegrete extends Frame {
 
 	}
 
-
+	/** Metodo che visualizza una finestra che mostra l'elenco delle note  
+	  * caricate con importaNota. 
+	  * Se la nota caricata non è del formato corretto, viene 
+	  * visualizzato un messaggio di errore. 
+	  */
 	public void pannelloNote(Panel p) {
 
 		List lista = new List();
@@ -226,12 +247,19 @@ class FrameNoteSegrete extends Frame {
 
 	}
 
-
+	/** Metodo che aggiorna l'array che contiene le note;
+	  * aggiungendo una nota attraverso il metodo pannelloNote,
+	  * viene aggiunta una nota all'array listaNote.  
+	  */
 	public void aggiornaLista(List lista) {
 		lista.add("id: "+listaNote[listaNote.length-1].getId()+"    ::    data: "+DataUtility.formattaData(listaNote[listaNote.length-1].getData()));
 	}
 
-
+	/** Metodo che mostra una finestra di dialogo con le informazioni
+	  * su una singola nota, in seguito alla sua selezione. 
+	  * In questa finestra è possibile inserire la password,
+	  * e quindi visualizzare il contenuto segreto.  
+	  */
 	public void contenutoNota(int index) {
 		String titolo = ""+listaNote[index].getId();
 		Dialog dialogContenuto = new Dialog(this, titolo);
@@ -296,7 +324,10 @@ class FrameNoteSegrete extends Frame {
 
 	}
 
-
+	/** Classe che definisce l'ascoltatore che viene usato  
+	  * nel memorizzare la master password del programma,
+	  * nel metodo masterPassword.   
+	  */
 	class FieldListener implements TextListener {
 
 		private String valoreCampo;
