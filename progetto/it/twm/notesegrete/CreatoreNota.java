@@ -36,7 +36,7 @@ public class CreatoreNota {
     int id = json.get("id").getAsInt();
     Date data; 
     try {
-      data = new Date(json.get("data").getAsLong());
+      data = new Date(json.get("date").getAsLong());
     } catch(NumberFormatException e) {
       data = new Date(0);
     }
