@@ -104,6 +104,7 @@ class FrameNoteSegrete extends Frame {
 		Panel panel = new Panel(new GridLayout(7,1));
 		dialog.setLayout(new FlowLayout( FlowLayout.CENTER));
 		dialog.add(panel);
+		dialog.setMinimumSize(new Dimension(400,250));
 
 		panel.add(label_1);
 		panel.add(label_2);
@@ -122,15 +123,26 @@ class FrameNoteSegrete extends Frame {
 		invia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				String password_1 = ascoltatorePassword_1.getValore();
-				String password_2 = ascoltatorePassword_2.getValore();
+				String password_1;
+				String password_2;
 
-				if(password_1.equals(password_2)) {
-					gestoreNote.impostaPassword(password_1);
-					dialog.dispose();
-					return;
-				} else {
+					password_1 = ascoltatorePassword_1.getValore();
+					password_2 = ascoltatorePassword_2.getValore();
+				
+
+				try  {
+					if(password_1.equals(password_2)) {
+						gestoreNote.impostaPassword(password_1);
+						dialog.dispose();
+						return;
+					}	 else {
+						errore.setText("I due inserimenti non corrispondono, riprova.");
 					errore.setVisible(true);
+				}
+			} catch (NullPointerException npe) {
+					errore.setText("Non puoi lasciare in bianco i campi!");
+					errore.setVisible(true);
+					return;
 				}
 			}
 		});
