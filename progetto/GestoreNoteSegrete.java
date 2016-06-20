@@ -104,6 +104,11 @@ public class GestoreNoteSegrete {
     if(nuovaNota == null) {
       return;
     }
+
+    if(nuovaNota.getId() == -1) {
+      return;
+    }
+
     String id = "" + nuovaNota.getId()+".nota";
     gestore.rinomina(temp, id);
     // Copia listaNote in nuovaListaNote
