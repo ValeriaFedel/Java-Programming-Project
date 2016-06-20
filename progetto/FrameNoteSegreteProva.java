@@ -18,9 +18,6 @@ class FrameNoteSegreteProva extends Frame {
 
 		setResizable(true);
 
-		Panel p = new Panel();
-		this.add(p);
-
 		this.setPreferredSize(new Dimension(500,300));
 
 		addWindowListener(new WindowAdapter() {
@@ -29,28 +26,26 @@ class FrameNoteSegreteProva extends Frame {
            	}
          });
 
+		Panel p = new Panel();
+		MenuBar menu = new MenuBar();
+		Menu file = new Menu("File");
+		MenuItem quit = new MenuItem("Quit", new MenuShortcut(KeyEvent.VK_Q));
+
+		quit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+
+		file.add(quit);
+		menu.add(file);	
+		this.add(p);
+		this.setMenuBar(menu);
+
 
 		masterPassword(p);
 
-		Button b = new Button("Scegli File");
-
-		//p.add(b);
-
 		pannelloNote(p);
-
-		//importaNota(b, this);
-
-		 //inizio il programma con il primo metodo
-			
-		/*if(listaNote.length == 0) {
-			System.out.println("Importa la tua prima nota");
-			importaNota();
-		}
-		
-		while(true) {
-			visualizzaNote(); //chiamo il prossimo step (direttamente se password già impostata)
-		}
-*/
 
 		setVisible(true);
 
@@ -202,9 +197,44 @@ class FrameNoteSegreteProva extends Frame {
 
 	public void contenutoNota(int index) {
 		String titolo = ""+listaNote[index].getId();
-		Dialog contenuto = new Dialog(this, titolo);
-		contenuto.setVisible(true);
+		Dialog dialogContenuto = new Dialog(this, titolo);
+		dialogContenuto.setVisible(true);
 
+		dialogContenuto.addWindowListener(new WindowAdapter() {
+         	public void windowClosing(WindowEvent windowEvent){
+           		dialogContenuto.dispose();
+           	}
+         });
+
+		Panel panelContenuto = new Panel();
+		TextArea contenutoNota = new TextArea(listaNote[index].getContenuto(), 10, 50, TextArea.SCROLLBARS_VERTICAL_ONLY);
+		contenutoNota.setEditable(false);
+
+		panelContenuto.add(contenutoNota);
+		dialogContenuto.add(panelContenuto, BorderLayout.CENTER);	
+
+		Label inserisciPassword = new Label("Inserisci la password per visualizzare in chiaro il contenuto");
+		TextField password = new TextField();
+		password.setEchoChar('*');
+		Button check = new Button("Decifra");
+
+		Panel controllaPassword = new Panel(new GridLayout(3,1));
+
+		dialogContenuto.add(controllaPassword, BorderLayout.SOUTH);
+		controllaPassword.add(inserisciPassword);
+		controllaPassword.add(password);
+		controllaPassword.add(check);
+
+		check.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String psw = password.getText();
+				if(gestoreNote.controllaPassword(psw)) {
+					contenutoNota.setText(gestoreNote.getContenutoDecifrato(listaNote[index]));
+				}
+			}
+		});
+
+		dialogContenuto.pack();
 
 
 	}

@@ -69,7 +69,7 @@ public class GestoreNoteSegrete {
   public void impostaPassword(String psw) {
     this.password = psw;
     String passwordCodificata = codifica.codifica(psw);
-	gestore.creaFile(NOME_FILE_PSW, passwordCodificata);
+	  gestore.creaFile(NOME_FILE_PSW, passwordCodificata);
   }
     
   /** Metodo che restituisce vero o falso a seconda che la password sia stata
