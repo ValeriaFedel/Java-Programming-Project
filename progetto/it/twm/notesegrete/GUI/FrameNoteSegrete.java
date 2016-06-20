@@ -154,7 +154,7 @@ class FrameNoteSegrete extends Frame {
 		p.setLayout(new BorderLayout());	
 		p.add(lista, BorderLayout.CENTER);
 		for(int i=0; i<listaNote.length; i++) {
-			lista.add("id: "+listaNote[i].getId()+"    ::    data: "+ DataUtility.trasformaInData(listaNote[i].getData()));
+			lista.add("id: "+listaNote[i].getId()+"    ::    data: "+ Data.formattaData(listaNote[i].getData()));
 		}
 		Panel southPanel = new Panel();
 		Button importa = new Button("Importa nota");
@@ -226,7 +226,7 @@ class FrameNoteSegrete extends Frame {
 
 
 	public void aggiornaLista(List lista) {
-		lista.add("id: "+listaNote[listaNote.length-1].getId()+"    ::    data: "+DataUtility.trasformaInData(listaNote[listaNote.length-1].getData()));
+		lista.add("id: "+listaNote[listaNote.length-1].getId()+"    ::    data: "+Data.formattaData(listaNote[listaNote.length-1].getData()));
 	}
 
 
@@ -241,34 +241,49 @@ class FrameNoteSegrete extends Frame {
            	}
          });
 
-		Panel panelContenuto = new Panel();
+		JPanel panelContenuto = new JPanel();
+		panelContenuto.setLayout(new BoxLayout(panelContenuto, BoxLayout.Y_AXIS));
 		TextArea contenutoNota = new TextArea(listaNote[index].getContenuto(), 10, 50, TextArea.SCROLLBARS_VERTICAL_ONLY);
 		contenutoNota.setEditable(false);
 
 		panelContenuto.add(contenutoNota);
+		panelContenuto.add(Box.createVerticalStrut(20));
+		panelContenuto.setBorder(BorderFactory.createEmptyBorder(30,30,45,30));
 		dialogContenuto.add(panelContenuto, BorderLayout.CENTER);	
 
 
 		Panel controllaPassword = new Panel();
 		controllaPassword.setLayout(new BoxLayout(controllaPassword, BoxLayout.Y_AXIS));
-		JLabel inserisciPassword = new JLabel("Inserisci la password per visualizzare in chiaro il contenuto");
-		TextField password = new TextField(3);
+		JLabel inserisciPassword = new JLabel("Inserisci la password per visualizzare in chiaro il contenuto:");
+		TextField password = new TextField();
 		password.setEchoChar('*');
 		Button check = new Button("Decifra");
-		check.setSize(new Dimension(25, 25));
-		inserisciPassword.setHorizontalAlignment(JLabel.CENTER);
+		JLabel msgErrore = new JLabel();
 		
-
+		check.setMaximumSize(new Dimension(80,80));
+		password.setMaximumSize(new Dimension(250,250));
+		inserisciPassword.setAlignmentX(Component.CENTER_ALIGNMENT);
+		msgErrore.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
 		dialogContenuto.add(controllaPassword, BorderLayout.SOUTH);
 		controllaPassword.add(inserisciPassword);
+		controllaPassword.add(Box.createVerticalStrut(6));
 		controllaPassword.add(password);
+		controllaPassword.add(Box.createVerticalStrut(10));
 		controllaPassword.add(check);
+		controllaPassword.add(Box.createVerticalStrut(6));
+		controllaPassword.add(msgErrore);
+
+		panelContenuto.add(controllaPassword);
 
 		check.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String psw = password.getText();
 				if(gestoreNote.controllaPassword(psw)) {
 					contenutoNota.setText(gestoreNote.getContenutoDecifrato(listaNote[index]));
+					msgErrore.setText("");
+				} else {
+					msgErrore.setText("Errore: Password incorretta");
 				}
 			}
 		});
