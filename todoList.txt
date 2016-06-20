@@ -29,6 +29,6 @@ o vedere di eccezzioni varie
 
 o trasformare l'array di note in un tipo List
 
-o packageare
+x packageare - silvia
 
 
