@@ -37,8 +37,8 @@ public class CreatoreNota {
     Date data; 
     try {
       data = new Date(json.get("date").getAsLong());
-    } catch(NumberFormatException e) {
-      data = new Date(0);
+    } catch(NumberFormatException | NullPointerException e) {
+      return nota;
     }
     
     if (json.get("number") != null) {

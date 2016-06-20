@@ -149,7 +149,7 @@ class FrameNoteSegrete extends Frame {
 		b.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				
+
 				FileDialog dialog = new FileDialog(f);
 				dialog.setVisible(true);
 				
@@ -189,8 +189,6 @@ class FrameNoteSegrete extends Frame {
 				
 				FileDialog dialog = new FileDialog(f);
 				dialog.setVisible(true);
-
-				System.out.println(dialog.getFile());
 
 				String s = dialog.getDirectory()+dialog.getFile();
 
