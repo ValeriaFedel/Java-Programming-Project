@@ -154,7 +154,7 @@ class FrameNoteSegrete extends Frame {
 		p.setLayout(new BorderLayout());	
 		p.add(lista, BorderLayout.CENTER);
 		for(int i=0; i<listaNote.length; i++) {
-			lista.add("id: "+listaNote[i].getId()+"    ::    data: "+ Data.formattaData(listaNote[i].getData()));
+			lista.add("id: "+listaNote[i].getId()+"    ::    data: "+ DataUtility.formattaData(listaNote[i].getData()));
 		}
 		Panel southPanel = new Panel();
 		Button importa = new Button("Importa nota");
@@ -181,7 +181,7 @@ class FrameNoteSegrete extends Frame {
 					aggiornaLista(lista);
 				} else {
 					Dialog errore = new Dialog(f, "Errore");
-					errore.setVisible(true);
+					
 
 					errore.addWindowListener(new WindowAdapter() {
 						public void windowClosing(WindowEvent e) {
@@ -208,6 +208,8 @@ class FrameNoteSegrete extends Frame {
  					});
 
  					errore.pack();
+					errore.setLocationRelativeTo(null);
+					errore.setVisible(true);
 				}
 				
 			}
@@ -226,7 +228,7 @@ class FrameNoteSegrete extends Frame {
 
 
 	public void aggiornaLista(List lista) {
-		lista.add("id: "+listaNote[listaNote.length-1].getId()+"    ::    data: "+Data.formattaData(listaNote[listaNote.length-1].getData()));
+		lista.add("id: "+listaNote[listaNote.length-1].getId()+"    ::    data: "+DataUtility.formattaData(listaNote[listaNote.length-1].getData()));
 	}
 
 
