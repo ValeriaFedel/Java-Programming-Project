@@ -54,8 +54,4 @@ public abstract class Nota {
     */
   abstract String getContenuto ();
 
-  public String toString() {
-    return ("id: "+id+"    ::    data: "+data);
-  }
-  
 }

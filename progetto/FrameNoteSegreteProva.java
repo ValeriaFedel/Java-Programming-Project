@@ -151,7 +151,7 @@ class FrameNoteSegreteProva extends Frame {
 		p.setLayout(new BorderLayout());	
 		p.add(lista, BorderLayout.CENTER);
 		for(int i=0; i<listaNote.length; i++) {
-			lista.add(listaNote[i].toString());
+			lista.add("id: "+listaNote[i].getId()+"    ::    data: "+ Data.trasformaInData(listaNote[i].getData()));
 		}
 		Panel southPanel = new Panel();
 		Button importa = new Button("Importa nota");
@@ -191,7 +191,7 @@ class FrameNoteSegreteProva extends Frame {
 
 
 	public void aggiornaLista(List lista) {
-		lista.add("id: "+listaNote[listaNote.length-1].getId()+"\t::\tdata: "+listaNote[listaNote.length-1].getData());
+		lista.add("id: "+listaNote[listaNote.length-1].getId()+"    ::    data: "+Data.trasformaInData(listaNote[listaNote.length-1].getData()));
 	}
 
 
