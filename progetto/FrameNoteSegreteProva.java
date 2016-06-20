@@ -47,9 +47,9 @@ class FrameNoteSegreteProva extends Frame {
 
 		pannelloNote(p);
 
-		setVisible(true);
-
 		this.pack();
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
 
 	}
 
