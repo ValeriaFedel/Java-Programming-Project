@@ -1,3 +1,5 @@
+package it.twm.notesegrete;
+
 import java.util.*;
 import com.google.gson.*;
 
@@ -21,6 +23,7 @@ public class CreatoreNota {
     JsonParser parser = new JsonParser();
     JsonObject json = new JsonObject();
     Nota nota = new NotaNumero(-1,new Date(0),0);
+
     try {
       json = (JsonObject)parser.parse(stringaJson);
     } catch(JsonSyntaxException e) {

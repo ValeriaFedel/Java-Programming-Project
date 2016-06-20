@@ -1,3 +1,5 @@
+package it.twm.notesegrete.utility;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,7 +12,7 @@ import java.util.Date;
   *      SimpleDateFormat.html#SimpleDateFormat()>Come modificare il formato</a>
   * @authors Silvia Florio, Valeria Fedel, Davide Mariuzzi
   */
-public class Data {
+public class DataUtility {
     
     /* ------------------------------ METODI ------------------------------- */
     /** Questo metodo converte un valore di tipo <code>Date</code> in una

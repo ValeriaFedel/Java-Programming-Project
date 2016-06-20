@@ -1,3 +1,5 @@
+package it.twm.notesegrete;
+
 import java.util.*;
 
 /** Classe astratta che definisce una nota nelle sue caratteristiche generali. 
@@ -52,6 +54,6 @@ public abstract class Nota {
     *
     * @return una stringa con il contenuto della nota.
     */
-  abstract String getContenuto ();
+  public abstract String getContenuto ();
 
 }

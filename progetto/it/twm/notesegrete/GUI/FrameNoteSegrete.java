@@ -1,13 +1,18 @@
+package it.twm.notesegrete.GUI;
+
+import it.twm.notesegrete.utility.DataUtility;
+import it.twm.notesegrete.*;
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
 
-class FrameNoteSegreteProva extends Frame {
+class FrameNoteSegrete extends Frame {
 	protected Nota[] listaNote;
 	protected GestoreNoteSegrete gestoreNote;
 	
-	public FrameNoteSegreteProva(GestoreNoteSegrete gestoreNote) {
+	public FrameNoteSegrete(GestoreNoteSegrete gestoreNote) {
 		this.gestoreNote = gestoreNote;
 		listaNote = gestoreNote.getNote();
 
@@ -149,7 +154,7 @@ class FrameNoteSegreteProva extends Frame {
 		p.setLayout(new BorderLayout());	
 		p.add(lista, BorderLayout.CENTER);
 		for(int i=0; i<listaNote.length; i++) {
-			lista.add("id: "+listaNote[i].getId()+"    ::    data: "+ Data.trasformaInData(listaNote[i].getData()));
+			lista.add("id: "+listaNote[i].getId()+"    ::    data: "+ DataUtility.trasformaInData(listaNote[i].getData()));
 		}
 		Panel southPanel = new Panel();
 		Button importa = new Button("Importa nota");
@@ -221,7 +226,7 @@ class FrameNoteSegreteProva extends Frame {
 
 
 	public void aggiornaLista(List lista) {
-		lista.add("id: "+listaNote[listaNote.length-1].getId()+"    ::    data: "+Data.trasformaInData(listaNote[listaNote.length-1].getData()));
+		lista.add("id: "+listaNote[listaNote.length-1].getId()+"    ::    data: "+DataUtility.trasformaInData(listaNote[listaNote.length-1].getData()));
 	}
 
 

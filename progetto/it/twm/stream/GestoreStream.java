@@ -1,3 +1,5 @@
+package it.twm.stream;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -9,7 +11,7 @@ import java.nio.file.StandardCopyOption;
   * @author Silvia Florio, Valeria Fedel, Davide Mariuzzi
   */
 
-abstract class GestoreStream {
+public abstract class GestoreStream {
 
 	/* ----------------------------- ATTRIBUTI ----------------------------- */
     /** Conterrà&agrave; una stringa con l'indicazione del percorso del file. */

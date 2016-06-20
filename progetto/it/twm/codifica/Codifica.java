@@ -1,3 +1,5 @@
+package it.twm.codifica;
+
 /** Questa interfaccia che contiene le dichiarazioni dei metodi utilizzabili 
   * dalle classi che la implementeranno.
   * Dà la possibilità di intercambiare agevolmente il metodo di cifratura.
