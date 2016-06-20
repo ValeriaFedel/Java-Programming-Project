@@ -9,10 +9,11 @@ import java.nio.file.StandardCopyOption;
   * @author Silvia Florio, Valeria Fedel, Davide Mariuzzi
   */
 
-abstract class GestoreStream {
+public abstract class GestoreStream {
 
 	/* ----------------------------- ATTRIBUTI ----------------------------- */
-    /** Conterrà una stringa con l'indicazione del percorso del file. */
+    /** Conterr&agrave; una stringa con l'indicazione del percorso del file.
+      */
 	protected String destinazione;
 
     
@@ -118,7 +119,7 @@ abstract class GestoreStream {
 		if(nomeFile.lastIndexOf(".") != -1 && nomeFile.lastIndexOf(".") != 0) {
 			return nomeFile.substring(nomeFile.lastIndexOf(".")+1);
 		}
-		return "nessuna estensione trovata";
+		return "Nessuna estensione trovata";
 	}
 
 	/** Metodo che legge il contenuto di un file e lo memorizza in una variabile di
@@ -171,7 +172,7 @@ abstract class GestoreStream {
       * @param nuovoNome nome del file dopo la rinomina.
       * @throws IOException se occorre qualche errore in fase di rinomina.
       */
-	public void rinomina(String vecchioNome, String nuovoNome) {
+	public void rinomina(String vecchioNome, String nuovoNome) throws IOException {
 		File vecchioFile = new File(destinazione+""+vecchioNome);
 		File nuovoFile = new File(destinazione+""+nuovoNome);
 		try {

@@ -1,5 +1,3 @@
-
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -32,21 +30,7 @@ public class GestoreFile extends GestoreStream {
       * @param nome     indica il nome del file da cui leggere il contenuto.
       * @throws IOException se occorre qualche errore in fase di scrittura.
       */
-	public void importaContenuto(String percorso, String nome) {
-
-		/* File nota = new File(destinazione + "" + nome + ".json");
-
-		try {
-			nota.createNewFile();
-			FileWriter output = new FileWriter(nota);
-            //scrivo il contenuto del file selezionato nel nuovo file
-			output.write(string); 
-			output.close();
-		} catch(IOException e) {
-			System.out.println("Errore in scrittura del file");
-		}
-
-		/* nuova implementazione */
+	public void importaContenuto(String percorso, String nome) throws IOException{
 		File originale = new File(percorso);
 		File inCartella = new File(destinazione+""+nome);		
 		try {
