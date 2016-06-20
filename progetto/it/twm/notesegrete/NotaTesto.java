@@ -2,7 +2,7 @@ package it.twm.notesegrete;
 
 import java.util.*;
 
-/** Classe che estende la classe Nota. </br>
+/** Classe che estende la classe Nota. <br>
   * Rappresenta una nota contenente del testo semplice.
   *
   * @see Nota
@@ -38,9 +38,10 @@ public class NotaTesto extends Nota {
     return testo;
   }
   
-  /** Restituisce il testo contenuto nella nota.
+  /** Restituisce il testo contenuto nella nota. <br>
+    * Implementa il metodo astratto presente nella sopraclasse.
     *
-    * @see getTesto() il risultato &egrave; lo stesso.
+    * @see #getTesto() il risultato &egrave; lo stesso.
     * @return ritorna una stringa con il contenuto del campo "testo". 
     */
   public String getContenuto() {

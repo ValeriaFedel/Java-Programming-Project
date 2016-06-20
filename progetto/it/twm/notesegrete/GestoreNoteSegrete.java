@@ -5,11 +5,10 @@ import it.twm.codifica.Codifica;
 
 import java.util.*;
 
-/** La classe <code>GestoreNoteSegrete</code> è il cuore del programma. Gestisce
-  * gran parte delle operazioni necessarie al funzionamento del programma.
+/** La classe <code>GestoreNoteSegrete</code> gestisce gran parte delle 
+  * operazioni necessarie al funzionamento del programma.
   * 
   * @see GestoreStream
-  * @see FrameNoteSegrete
   * @see Codifica
   * @author Silvia Florio, Valeria Fedel, Davide Mariuzzi
   */
@@ -19,17 +18,18 @@ public class GestoreNoteSegrete {
   /** Array di note di tipo <code>Nota</code>.
     */
   private Nota[] listaNote;
-  /** Oggetto che servirà ad applicare le procedure di codifica e decodifica
-    * al contenuto della nota.
+  /** Oggetto che servir&agrave; ad applicare le procedure di codifica e 
+    * decodifica al contenuto della nota.
     */
   private Codifica codifica;
   /** Oggetto di tipo gestore che permette di operare con i metodi della
     * classe gestore.
     */
   private GestoreStream gestore;
-  /** Variabile che conterrà la password. */
+  /** Variabile che conterr&agrave; la password.
+    */
   private String password = null;
-  /** Costante che specifica quale nome dovrà avere il file contenente la
+  /** Costante che specifica quale nome dovr&agrave; avere il file contenente la
     * master password.
     */
   private final String NOME_FILE_PSW = "Master_password.txt";
@@ -69,7 +69,7 @@ public class GestoreNoteSegrete {
     /** Procedura che memorizza la master password inserita dall'utente, la 
       * codifica e crea un file che la contenga. 
       *
-      * @param psw è la password inserita dall'utente.
+      * @param psw &egrave; la password inserita dall'utente.
       */
   public void impostaPassword(String psw) {
     this.password = psw;
@@ -117,14 +117,11 @@ public class GestoreNoteSegrete {
 
     String id = "" + nuovaNota.getId()+".nota";
     gestore.rinomina(temp, id);
-    // Copia listaNote in nuovaListaNote
     Nota[] nuovaListaNote = new Nota[listaNote.length+1];
     for (int i=0; i<listaNote.length; i++) {
       nuovaListaNote[i] = listaNote[i];
     }
-    // In ultima posizione si inserisce la nuova nota.
     nuovaListaNote[listaNote.length] = nuovaNota;
-    // Il "vecchio" array viene sostituito con quello "nuovo".
     listaNote = nuovaListaNote;
   
   }
@@ -143,7 +140,7 @@ public class GestoreNoteSegrete {
   
   /** Metodo che controlla la correttezza della master password inserita.
     *
-    * @param psw è la password inserita dall'utente.
+    * @param psw &egrave; la password inserita dall'utente.
     * @return <code>true</code> se la password inserita corrisponde alla master
     *         password impostata, <code>false</code> altrimenti.
     */

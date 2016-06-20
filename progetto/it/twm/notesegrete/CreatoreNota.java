@@ -3,7 +3,7 @@ package it.twm.notesegrete;
 import java.util.*;
 import com.google.gson.*;
 
-/** Classe <code>CreatoreNota</code>. </br>
+/** Classe <code>CreatoreNota</code>. <br>
   * Contiene un metodo statico che permette la creazione di una nota.
   * È priva di costruttori e attributi.
   *
@@ -40,7 +40,6 @@ public class CreatoreNota {
     } catch(NumberFormatException e) {
       data = new Date(0);
     }
-    //  long data = new Date(System.currentTimeMillis());
     
     if (json.get("number") != null) {
       int numero = json.get("number").getAsInt();

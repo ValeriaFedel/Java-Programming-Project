@@ -14,7 +14,9 @@ import java.nio.file.StandardCopyOption;
 public abstract class GestoreStream {
 
 	/* ----------------------------- ATTRIBUTI ----------------------------- */
-    /** Conterrà&agrave; una stringa con l'indicazione del percorso del file. */
+    /** Conterr&agrave; una stringa con l'indicazione del percorso in cui
+      * il programma memorizza i propri file.
+      */
 	protected String destinazione;
 
     
@@ -85,11 +87,12 @@ public abstract class GestoreStream {
 		return;
 	}
 
-	/** Metodo che restituisce i nomi dei file con l'estensione voluta.
+	/** Metodo che restituisce un array con i contenuti dei file presenti nella
+      * directory, con l'estensione richiesta.
       *
       * @param estensione indica l'estensione dei file da leggere nella directory.
-      * @return ritorna una array di stringhe. Ogni posizione contiene il nome di
-      *         di un file con l'estensione voluta.
+      * @return ritorna una array di stringhe. Ogni posizione rappresenta il
+      *         contenuto di una nota.
       */
 	public String[] leggiDirectory(String estensione) {
 		File dir = new File(destinazione);
@@ -112,7 +115,7 @@ public abstract class GestoreStream {
 
 	/** Metodo che restituisce l'estensione di un file.
       *
-      * @nomeFile indica il nome del file di cui si vuole sapere l'estensione.
+      * @param nomeFile indica il nome del file di cui si vuole sapere l'estensione.
       * @return una stringa con l'estensione del file oppure un messaggio che
       *         informa l'utente che non è stata trovata alcuna estensione.
       */
@@ -127,8 +130,6 @@ public abstract class GestoreStream {
       * tipo String.
       *
       * @param nome nome del file da leggere.
-      * @throws FileNotFounfexception se occorre qualche errore in fase di apertura
-      *         del file.
       * @return ritorna una stringa con il contenuto letto dal file.
       */ 	
 	public 	String leggiFile(String nome) {
@@ -145,7 +146,6 @@ public abstract class GestoreStream {
 		long length = file.length();
 		char[] array = new char[(int)length]; 
 		
-		// Memorizzo in un array di char il contenuto del file da leggere.
 		try {
 			array[0] = (char)f.read();
 			for(int i=1; i<array.length; i++) {
@@ -155,7 +155,7 @@ public abstract class GestoreStream {
 			System.out.println("Errore in lettura del file");
 		}
 
-		s = new String(array); //creo una stringa dall'array
+		s = new String(array);
 
 		try {
 			f.close();
@@ -182,6 +182,10 @@ public abstract class GestoreStream {
 		}
 	}
  	
-    /** Metodo vuoto */
-	public void importaContenuto(String percorso, String nome) {}
+    /** Metodo vuoto che verr&agrave; implementato dalle sottoclassi.
+      *
+      * @param percorso rappresenta il percorso di destinazione del file.
+      * @param nome     rappresenta il nome del file.
+      */
+	public abstract void importaContenuto(String percorso, String nome);
 }

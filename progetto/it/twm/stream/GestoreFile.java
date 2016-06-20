@@ -30,7 +30,6 @@ public class GestoreFile extends GestoreStream {
       * @see GestoreStream
       * @param percorso indica il percorso del file sul filesystem.
       * @param nome     indica il nome del file da cui leggere il contenuto.
-      * @throws IOException se occorre qualche errore in fase di scrittura.
       */
 	public void importaContenuto(String percorso, String nome) {
 		File originale = new File(percorso);
