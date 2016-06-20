@@ -4,6 +4,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.awt.CardLayout;
 import java.util.*;
+
 import javax.swing.JFrame;
 
 
@@ -11,7 +12,7 @@ import javax.swing.JFrame;
 il CardLayout, a cui sono stati aggiunti i vari tipi di panel (SetPassword, CaricaNote, ecc.). */
 
 public class FrameNoteSegrete extends Frame {
-    
+
 	private Nota[] listaNote;
 	private GestoreNoteSegrete gestore;
 
@@ -26,7 +27,7 @@ public class FrameNoteSegrete extends Frame {
 		
 		this.gestore = gestore;
 
-		setSize(400,70);
+		
 	    setLayout(new GridLayout(1,3));
 	    
 	    // posiziona la finestra al centro dello schermo
@@ -108,8 +109,6 @@ public class FrameNoteSegrete extends Frame {
 				public void actionPerformed(ActionEvent e) {
 	 				password = new String(str);
 	 				gestore.impostaPassword(password);
-	 				
-
 	 				card.show(mainPanel, "caricaNote");
 				}
 			});
@@ -179,18 +178,23 @@ public class FrameNoteSegrete extends Frame {
 		Panel[] casella;
 		Panel panel;
 		Nota[] listaNote;
-		Date dataStandard;
-        Data dataFormattata;
+		Date d;
 		int q;
 
 		CardLayout card;
 		Panel mainPanel;
 		
+
 		public ElencoNote(final CardLayout card, final Panel mainPanel,GestoreNoteSegrete gestore) {
+			
 			this.card = card;
 			this.mainPanel = mainPanel;
+
+			
 			setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
 			if (gestore.getNote() == null) {
+				
 				// bottone "torna indietro"
 				Button b2 = new Button("Torna Indietro");
 				add(b2);
@@ -202,8 +206,10 @@ public class FrameNoteSegrete extends Frame {
 			} else {
 
 			listaNote = gestore.getNote();
+
 			// una "casella" contiene una nota
 			casella = new Panel[listaNote.length];
+			
 			// creo le caselle
 			for (int i = 0; i < listaNote.length; i++) {
 				panel = new Panel();
@@ -213,13 +219,13 @@ public class FrameNoteSegrete extends Frame {
 				add(casella[i]);
 				casella[i].setVisible(true);
 			}
-                
+
+
 			// inserisco i dati all'interno di ciascuna casella
 			for (int i = 0; i < listaNote.length; i++) {
+	
 				q = listaNote[i].getId();
-                //Nuovo codice da controllare
-				dataStandard = listaNote[i].getData();
-                dataFormattata = Data.trasformaInData(dataStandard);
+				d = listaNote[i].getData();
 				id = new TextField(q);
 				//data = new TextField(d);
 				casella[i].add(id);
@@ -244,6 +250,7 @@ public class FrameNoteSegrete extends Frame {
                     setBackground(background);
 
                     NotaSelezionata f = new NotaSelezionata();
+                    
                 }
  				}); 
 			}	
@@ -254,10 +261,13 @@ public class FrameNoteSegrete extends Frame {
 	class NotaSelezionata extends JFrame {
 
 		GestoreNoteSegrete gestore;
-		public NotaSelezionata() {
-			setSize(300,60);
-			getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
+		public NotaSelezionata() {
+			
+			setSize(300,90);
+			setLayout(new GridLayout(2,1));
+			getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+			
 			Panel p1 = new Panel();
 			Label labelID = new Label("ID:");
 			TextField fID = new TextField();
@@ -272,16 +282,29 @@ public class FrameNoteSegrete extends Frame {
 			p2.add(fData);
 			getContentPane().add(p2);
 
+			Dimension dimensioneSchermo = Toolkit.getDefaultToolkit().getScreenSize();
+		    int height = dimensioneSchermo.height;
+		    int width = dimensioneSchermo.width;
+			setLocationRelativeTo(null);
       		setVisible(true);			
 		}
 	}
 
 
+
+
  class Esegui {
+
 	public static void main(String[] args) {
 		Codifica codifica = new CodificaGiulioCesare();
 		GestoreStream stream = new GestoreFile("./");
 		GestoreNoteSegrete gestore = new GestoreNoteSegrete(codifica, stream);
-		FrameNoteSegrete newGUI = new FrameNoteSegrete(gestore); // creo la finestra		
+		FrameNoteSegrete newGUI = new FrameNoteSegrete(gestore); // creo la finestra
+		
 		}
 }
+
+
+
+
+
