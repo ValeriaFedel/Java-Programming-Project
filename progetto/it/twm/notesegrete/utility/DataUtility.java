@@ -23,7 +23,7 @@ public class DataUtility {
       * @param data data formattata in formato standard.
       * @return ritorna una stringa con la data.
       */
-    public static String trasformaInData(Date data) {
+    public static String formattaData(Date data) {
         SimpleDateFormat dataFormattata = new SimpleDateFormat("dd/MM/yyyy");    
         String dataInStringa = dataFormattata.format(data);
         return dataInStringa;
