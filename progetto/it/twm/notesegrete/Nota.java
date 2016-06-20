@@ -14,12 +14,12 @@ import java.util.*;
 public abstract class Nota {
   
   /* ----------------------------- ATTRIBUTI ----------------------------- */
-  /** Contiene il numero identificativo della nota. */
+  /** Contiene il numero identificativo della nota.
+    */
   protected int id;
-  /** Contiene la data della nota. */
+  /** Contiene la data della nota.
+    */
   protected Date data;
-  /** Contiene la stringa con il contenuto del file. */
-  protected String contenuto;
   
   
   /* ---------------------------- COSTRUTTORE ---------------------------- */
