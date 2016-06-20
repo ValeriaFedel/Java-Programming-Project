@@ -30,7 +30,7 @@ public class GestoreFile extends GestoreStream {
       * @param nome     indica il nome del file da cui leggere il contenuto.
       * @throws IOException se occorre qualche errore in fase di scrittura.
       */
-	public void importaContenuto(String percorso, String nome){
+	public void importaContenuto(String percorso, String nome) {
 		File originale = new File(percorso);
 		File inCartella = new File(destinazione+""+nome);		
 		try {

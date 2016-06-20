@@ -172,7 +172,7 @@ public abstract class GestoreStream {
       * @param nuovoNome nome del file dopo la rinomina.
       * @throws IOException se occorre qualche errore in fase di rinomina.
       */
-	public void rinomina(String vecchioNome, String nuovoNome) throws IOException {
+	public void rinomina(String vecchioNome, String nuovoNome) {
 		File vecchioFile = new File(destinazione+""+vecchioNome);
 		File nuovoFile = new File(destinazione+""+nuovoNome);
 		try {
