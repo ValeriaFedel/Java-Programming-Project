@@ -9,11 +9,10 @@ import java.nio.file.StandardCopyOption;
   * @author Silvia Florio, Valeria Fedel, Davide Mariuzzi
   */
 
-public abstract class GestoreStream {
+abstract class GestoreStream {
 
 	/* ----------------------------- ATTRIBUTI ----------------------------- */
-    /** Conterr&agrave; una stringa con l'indicazione del percorso del file.
-      */
+    /** Conterrà&agrave; una stringa con l'indicazione del percorso del file. */
 	protected String destinazione;
 
     
@@ -25,6 +24,7 @@ public abstract class GestoreStream {
       */
 	public GestoreStream(String destinazione) {
 		this.destinazione = destinazione;
+		
 	}
 
     
@@ -54,8 +54,7 @@ public abstract class GestoreStream {
       * 
       * @param nome       nome del nuovo file.
       * @param contenuto  stringa con il contenuto da scrivere nel file.
-      * @throws IOException se occorre qualche errore in fase di scrittura oppure
-      *                     in fase di creazione del file.
+      * 
       */
 	public void creaFile(String nome, String contenuto) {
 		File f = new File(destinazione+""+nome);
@@ -119,7 +118,7 @@ public abstract class GestoreStream {
 		if(nomeFile.lastIndexOf(".") != -1 && nomeFile.lastIndexOf(".") != 0) {
 			return nomeFile.substring(nomeFile.lastIndexOf(".")+1);
 		}
-		return "Nessuna estensione trovata";
+		return "nessuna estensione trovata";
 	}
 
 	/** Metodo che legge il contenuto di un file e lo memorizza in una variabile di
@@ -128,8 +127,6 @@ public abstract class GestoreStream {
       * @param nome nome del file da leggere.
       * @throws FileNotFounfexception se occorre qualche errore in fase di apertura
       *         del file.
-      * @throws IOException se occorre qualche errore in fase di lettura del file
-      *                     o chiusura del file.
       * @return ritorna una stringa con il contenuto letto dal file.
       */ 	
 	public 	String leggiFile(String nome) {
@@ -170,7 +167,6 @@ public abstract class GestoreStream {
       *
       * @param vecchioNome nome del file da rinominare.
       * @param nuovoNome nome del file dopo la rinomina.
-      * @throws IOException se occorre qualche errore in fase di rinomina.
       */
 	public void rinomina(String vecchioNome, String nuovoNome) {
 		File vecchioFile = new File(destinazione+""+vecchioNome);
