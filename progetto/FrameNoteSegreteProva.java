@@ -1,6 +1,7 @@
-
 import java.awt.*;
+import javax.swing.*;
 import java.awt.event.*;
+
 
 class FrameNoteSegreteProva extends Frame {
 	protected Nota[] listaNote;
@@ -42,7 +43,6 @@ class FrameNoteSegreteProva extends Frame {
 		this.add(p);
 		this.setMenuBar(menu);
 
-
 		masterPassword(p);
 
 		pannelloNote(p);
@@ -61,7 +61,6 @@ class FrameNoteSegreteProva extends Frame {
 
 		Dialog dialog = new Dialog(this, "dialog");
 		dialog.setPreferredSize(new Dimension(300,200));
-		dialog.setVisible(true);
 		dialog.addWindowListener(new WindowAdapter() {
          	public void windowClosing(WindowEvent windowEvent){
            		dialog.dispose();
@@ -118,7 +117,8 @@ class FrameNoteSegreteProva extends Frame {
 		});
 
 		dialog.pack();
-	
+		dialog.setLocationRelativeTo(null);
+		dialog.setVisible(true);
 	}
 
 
@@ -228,7 +228,7 @@ class FrameNoteSegreteProva extends Frame {
 	public void contenutoNota(int index) {
 		String titolo = ""+listaNote[index].getId();
 		Dialog dialogContenuto = new Dialog(this, titolo);
-		dialogContenuto.setVisible(true);
+
 
 		dialogContenuto.addWindowListener(new WindowAdapter() {
          	public void windowClosing(WindowEvent windowEvent){
@@ -243,12 +243,16 @@ class FrameNoteSegreteProva extends Frame {
 		panelContenuto.add(contenutoNota);
 		dialogContenuto.add(panelContenuto, BorderLayout.CENTER);	
 
-		Label inserisciPassword = new Label("Inserisci la password per visualizzare in chiaro il contenuto");
-		TextField password = new TextField();
+
+		Panel controllaPassword = new Panel();
+		controllaPassword.setLayout(new BoxLayout(controllaPassword, BoxLayout.Y_AXIS));
+		JLabel inserisciPassword = new JLabel("Inserisci la password per visualizzare in chiaro il contenuto");
+		TextField password = new TextField(3);
 		password.setEchoChar('*');
 		Button check = new Button("Decifra");
-
-		Panel controllaPassword = new Panel(new GridLayout(3,1));
+		check.setSize(new Dimension(25, 25));
+		inserisciPassword.setHorizontalAlignment(JLabel.CENTER);
+		
 
 		dialogContenuto.add(controllaPassword, BorderLayout.SOUTH);
 		controllaPassword.add(inserisciPassword);
@@ -265,7 +269,8 @@ class FrameNoteSegreteProva extends Frame {
 		});
 
 		dialogContenuto.pack();
-
+		dialogContenuto.setLocationRelativeTo(null);
+		dialogContenuto.setVisible(true);
 
 	}
 
