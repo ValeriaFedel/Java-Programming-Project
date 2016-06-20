@@ -111,11 +111,14 @@ public class GestoreNoteSegrete {
       return;
     }
 
-    if(nuovaNota.getId() == -1) {
-      return;
-    }
+    String id;
 
-    String id = "" + nuovaNota.getId()+".nota";
+    if(nuovaNota.getId() == -1) {
+      id  = "" + nuovaNota.getId()+".err";
+      return;
+    } else  {
+      id = "" + nuovaNota.getId()+".nota";
+    }
     gestore.rinomina(temp, id);
     Nota[] nuovaListaNote = new Nota[listaNote.length+1];
     for (int i=0; i<listaNote.length; i++) {
