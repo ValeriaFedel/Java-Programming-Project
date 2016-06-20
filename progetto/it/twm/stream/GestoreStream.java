@@ -112,7 +112,7 @@ public abstract class GestoreStream {
 
 	/** Metodo che restituisce l'estensione di un file.
       *
-      * @nomeFile indica il nome del file di cui si vuole sapere l'estensione.
+      * @param nomeFile indica il nome del file di cui si vuole sapere l'estensione.
       * @return una stringa con l'estensione del file oppure un messaggio che
       *         informa l'utente che non è stata trovata alcuna estensione.
       */
@@ -127,8 +127,6 @@ public abstract class GestoreStream {
       * tipo String.
       *
       * @param nome nome del file da leggere.
-      * @throws FileNotFounfexception se occorre qualche errore in fase di apertura
-      *         del file.
       * @return ritorna una stringa con il contenuto letto dal file.
       */ 	
 	public 	String leggiFile(String nome) {
@@ -182,6 +180,8 @@ public abstract class GestoreStream {
 		}
 	}
  	
-    /** Metodo vuoto */
-	public void importaContenuto(String percorso, String nome) {}
+    /** Metodo vuoto che verr&agrave; implementato dalle sottoclassi.
+      * 
+      */
+	public abstract void importaContenuto(String percorso, String nome);
 }

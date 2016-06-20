@@ -2,7 +2,7 @@ package it.twm.notesegrete;
 
 import java.util.*;
 
-/** Classe che estende la classe <code>Nota</code>. </br>
+/** Classe che estende la classe <code>Nota</code>. <br>
   * Rappresenta una nota contenente due campi di testo quali <b>username</b>
   * e <b>password</b>.
   * 
@@ -12,9 +12,11 @@ import java.util.*;
 public class NotaAccount extends Nota {
   
   /* ----------------------------- ATTRIBUTI ----------------------------- */
-  /** Variabile che contiene il nome utente. */
+  /** Variabile che contiene il nome utente.
+    */
   private String username;
-  /** Variabile che contiene la password. */
+  /** Variabile che contiene la password.
+    */
   private String password;
   
   
